@@ -1,0 +1,19 @@
+.body{
+    background-color: orange;
+}
+
+
+.task{
+    width: auto;
+    border-radius: 0.2rem;
+    margin: 1rem;
+}
+.task-name{
+    border-radius: 0.2rem;
+    background-color: antiquewhite;
+}
+.no-m{
+    margin: 0px;
+    padding: 0px;
+    width: 10rem;
+}
