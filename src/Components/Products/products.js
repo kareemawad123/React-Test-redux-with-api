@@ -14,30 +14,30 @@ export default function Products() {
 
     const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        axiosInstance.get('').then((response) => {
-        // axios.get('https://api.themoviedb.org/3/movie/popular?api_key=a29b764d285577543b22f1b2ee8f8ff5').then((response) => {
-            console.log(response.data.results[0].title); 
-            setProducts(response.data);
-        }).catch((error) => {
-            console.log("Error: " + error);
-        })
-    }, [])
+    // useEffect(() => {
+    //     axiosInstance.get('').then((response) => {
+    //     // axios.get('https://api.themoviedb.org/3/movie/popular?api_key=a29b764d285577543b22f1b2ee8f8ff5').then((response) => {
+    //         console.log(response.data[0].title); 
+    //         setProducts(response.data); 
+    //     }).catch((error) => {
+    //         console.log("Error: " + error);
+    //     })
+    // }, [])
 
 
 
     return (
         <div>
-            <h2>{products.title}</h2>
-            {products.map((prd) => {
+            {/* <h2>{products.title}</h2> */}
+            {/* {products.map((prd) => {
                 return (
                     <div key={prd.id}>
                         <NavLink to={`/details/${prd.id}`}>
                             <h2>{prd.title}</h2>
                         </NavLink>
                     </div>)
-            })}
-            <h1>{products[0].title}</h1>
+            })} */}
+            {/* <h1>{products[0].title}</h1> */}
 
             {/* <h1>Products</h1>
             <div>

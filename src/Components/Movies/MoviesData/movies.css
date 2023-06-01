@@ -4,3 +4,16 @@
     display: flex;
     flex-direction: row;
 }
+
+.image-movie{
+    position: relative;
+}
+.favorite{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: red;
+}
+.favorite:focus{
+    border: none;
+}

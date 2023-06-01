@@ -20,6 +20,9 @@ import EditProduct from './Components/Products/Edit/editProduct';
 import Movies from './Components/Movies/MoviesData/movies';
 import MovieDetails from './Components/Movies/MovieDetails/details';
 import swal from 'sweetalert';
+import ProtectedRoute from './Components/ProtectedRoutes/protectedRoutes';
+import Favorites from './Components/favorite/favorite';
+import { LanguageProvider } from './Contexts/language';
 
 
 function App() {
@@ -31,46 +34,55 @@ function App() {
   const handleAddTask = (task) => {
     setTasks([...tasks, { id: tasks.length, taskName: task.taskName, complete: false }])
   }
-  console.log(tasks);
+  // console.log(tasks);
   useEffect(() => {
     console.log("Errect delete");
   }, [])
   const [guardRoute, setGuardRoute] = useState(false)
 
-
+  const [language, setLanguage] = useState('en');
   return (
     <div className="App">
-      <Container>
-        <NavbarComponent />
+      <LanguageProvider value={{language,setLanguage}}>
+        <Container>
+          <NavbarComponent />
 
-        <Row className='text-start ms-5 mt-5 mb-5 row-design'>
-          <Routes>
-            <Route path='/' element={<Movies />} />
-            <Route path='/addUser' element={<AddUserFormNative />} />
-            <Route path='/signup' element={<SignupForm />} />
-            {/* <Route path='/products' element={<Products />} >
-              <Route index element={<SaveProduct />} />
-              <Route path='save' element={<SaveProduct />} />
-              <Route path='edit' element={<EditProduct />} />
-            </Route> */}
+          <Row className='text-start ms-5 mt-5 mb-5 row-design'>
+            <Routes>
+              <Route path='/' element={<AddUserFormNative />} />
+              <Route element={<ProtectedRoute />} >
+                <Route path='/home' element={<Movies />} />
+                <Route path='/details/:id' element={<MovieDetails />} />
+                <Route path='/favorite' element={<Favorites />} />
+              </Route>
 
-            <Route path='/details/:id' element={<MovieDetails />} />
-            {/* <Route path='/details/:id' element={<ProductDetails />} /> */}
-            <Route path='/contactus' element={<ContactUs />} />
-            <Route path='*' element={<NotFound />} />
-          </Routes>
+              <Route path='/login' element={<AddUserFormNative />} />
+              <Route path='/signup' element={<SignupForm />} />
 
-          {/* <UsersFunction /> */}
-        </Row>
-        {/* <Row className='text-start ms-5 mt-5'>
+              <Route path='/products' element={<Products />} >
+                <Route index element={<SaveProduct />} />
+                <Route path='save' element={<SaveProduct />} />
+                <Route path='edit' element={<EditProduct />} />
+              </Route>
+
+              {/* <Route path='/details/:id' element={<ProductDetails />} /> */}
+              <Route path='/contactus' element={<ContactUs />} />
+              <Route path='*' element={<NotFound />} />
+            </Routes>
+
+            {/* <UsersFunction /> */}
+          </Row>
+          {/* <Row className='text-start ms-5 mt-5'>
           <AddUserFormNative />
         </Row> */}
-        {/* <Row className='text-start ms-5 mt-5 mb-5 row-design'>
+          {/* <Row className='text-start ms-5 mt-5 mb-5 row-design'>
 
           <SignupForm />
 
         </Row> */}
-      </Container>
+        </Container>
+      </LanguageProvider>
+
       {/* To Do App */}
       {/* <Container>
 

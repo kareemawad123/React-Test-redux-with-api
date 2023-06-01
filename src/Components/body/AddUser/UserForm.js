@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import './UserForm.css'
 import { BiHide } from "react-icons/bi";
+import { languageContext } from "../../../Contexts/language";
 // import { useNavigate } from "react-router-dom";
 
 const AddUserFormNative = () => {
@@ -11,6 +12,7 @@ const AddUserFormNative = () => {
     // const goToNavigateProducts = ()=>{
     //     navigate('/users');
     // }
+    const language = useContext(languageContext)
 
     const [user, setUser] = useState(
         {
@@ -24,6 +26,10 @@ const AddUserFormNative = () => {
             passwordError: '',
         }
     )
+    const handleLanguage = ()=>{
+        language.language =='en'? language.setLanguage('ar'): language.setLanguage('en');
+        console.log(language);
+    }
     const [showPassword, setShowPassword] = useState(true)
 
     const handleChange = (ev) => {
@@ -84,7 +90,7 @@ const AddUserFormNative = () => {
             <p className="text-danger">{errors.passwordError}</p>
 
             <div className="mb-3">
-                <input type="submit" className="form-control btn btn-danger w-25" onClick={(e) => { handleSubmit(e) }}
+                <input type="submit" className="form-control btn btn-danger w-25" onClick={(e) => { handleLanguage(e) }}
                     id="exampleFormControlInput3" value={'Login'} />
             </div>
         </Col>

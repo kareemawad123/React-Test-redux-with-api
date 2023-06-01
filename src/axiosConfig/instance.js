@@ -12,6 +12,7 @@ const axiosInstance = axios.create({
         api_key: 'a29b764d285577543b22f1b2ee8f8ff5'
     }
 
-})
+});
+
 
 export default axiosInstance;
